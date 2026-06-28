@@ -43,6 +43,24 @@ Set a **spending limit** in the X Developer Console.
    - Find `"chat":{"id":-100…}` in the JSON.
 3. If `sendMessage` returns 403, the bot lacks permission or is not an admin.
 
+## Pushing the workflow file (`workflow` scope)
+
+Git/GitHub refuses to push files under `.github/workflows/` unless the credential has the **`workflow`** OAuth scope. A normal `gh auth login` grants `repo`, `gist`, `read:org` — **not** `workflow` — so the push fails with:
+
+```
+! [remote rejected] main -> main (refusing to allow an OAuth App to create or
+update workflow `.github/workflows/mirror.yml` without `workflow` scope)
+```
+
+**Fix (recommended):** grant the scope once, then push normally.
+
+```bash
+gh auth status                          # check current scopes
+gh auth refresh -h github.com -s workflow   # adds the workflow scope (opens browser)
+```
+
+**Fallback (no token refresh):** push every file except the workflow, then create `.github/workflows/mirror.yml` through the GitHub web UI (**Add file → Create new file**) and paste the contents of `templates/mirror.yml`. The web UI is allowed to add workflow files.
+
 ## GitHub Actions notes
 
 - **`workflow_dispatch`:** manual "Run workflow" button for testing after secrets are set.
@@ -62,6 +80,7 @@ Set a **spending limit** in the X Developer Console.
 | No tweets mirrored but workflow succeeds | First-run seed only | Wait for a **new** post after first successful run |
 | State not updating | Telegram send failed | Check logs; state advances only after successful send |
 | Duplicate tweets | State file not committed | Ensure workflow has `contents: write` and push succeeded |
+| `git push` rejected: "without `workflow` scope" | Token lacks `workflow` scope | `gh auth refresh -h github.com -s workflow`, or add the workflow file via GitHub web UI |
 
 ## Optional: mirror your own account (OAuth)
 

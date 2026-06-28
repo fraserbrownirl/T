@@ -57,6 +57,16 @@ Execute these phases in order. Pause for user input when secrets or channel IDs 
 3. Add a short `README.md` in the user's repo (setup summary + link to add four GitHub Secrets).
 4. Commit and push to **the user's repo** before Phase 4 — the workflow must exist on their default branch.
 
+> [!IMPORTANT]
+> **Pushing `.github/workflows/mirror.yml` requires the `workflow` token scope.** A standard `gh` login (scopes like `repo`, `gist`, `read:org`) will be **rejected** with:
+> `refusing to allow an OAuth App to create or update workflow .github/workflows/mirror.yml without workflow scope`.
+>
+> Handle this **proactively before pushing**, do not wait for the push to fail. Check scopes with `gh auth status`; if `workflow` is missing, grant it once:
+> ```bash
+> gh auth refresh -h github.com -s workflow
+> ```
+> This opens a browser to re-authorize. If the user cannot or will not refresh the token, fall back: push everything **except** the workflow, then have the user add `.github/workflows/mirror.yml` via the GitHub web UI (**Add file → Create new file**), pasting the contents of `templates/mirror.yml`.
+
 ### Phase 2 — X Developer API (user BYOK)
 
 Walk the user through [developer.x.com](https://developer.x.com):

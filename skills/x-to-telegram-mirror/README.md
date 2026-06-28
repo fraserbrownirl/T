@@ -76,6 +76,13 @@ secrets. Ask me for each value when you need it.
 
 The agent reads [`SKILL.md`](SKILL.md), which contains the full phase-by-phase instructions.
 
+> [!TIP]
+> Setup pushes a GitHub Actions workflow file, which needs the **`workflow`** token scope. If your agent uses the `gh` CLI and the push gets rejected, run this once and retry:
+> ```bash
+> gh auth refresh -h github.com -s workflow
+> ```
+> The skill instructs the agent to handle this automatically, but this is the fix if you see a `without workflow scope` error.
+
 ---
 
 ## What you need (4 things)
