@@ -32,7 +32,8 @@ START_NEW_USER = (
     "<b>3. Add me as admin</b>\n"
     "Still in the group info → <b>Administrators</b> → <b>Add Administrator</b> → "
     "find me → enable <b>Manage Topics</b> → Done.\n\n"
-    "That's it. I'll set up your feed the moment you add me."
+    "I'll set up your feed the moment you add me. "
+    "Then forward me any post from a channel to add it to your feed."
 )
 
 START_ACTIVE_USER = (
@@ -50,9 +51,9 @@ START_PAUSED_USER = (
 )
 
 SETUP_DONE = (
-    "Your feed is ready. Three topics have been created in your supergroup: "
-    "<b>Newest</b>, <b>Popular</b>, and <b>For You</b>.\n\n"
-    "Now forward me any post from a channel you follow to add it to your feed."
+    "Your feed is ready — <b>Newest</b>, <b>Popular</b>, and <b>For You</b> topics are set up.\n\n"
+    "To add a channel: open it in Telegram, long-press any post, tap <b>Forward</b>, and send it to me here. "
+    "I'll check you're a member and start delivering its posts to your feed."
 )
 
 ADD_OK = "Added <b>{title}</b> to your feed. New posts will appear in Newest."
