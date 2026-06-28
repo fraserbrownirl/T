@@ -22,16 +22,18 @@ WELCOME_FORYOU = (
 )
 
 START_NEW_USER = (
-    "Welcome.\n\n"
-    "This bot gives you a personal feed of Telegram channels in three topics: "
+    "Hi! I'll create a personal feed for you in three topics: "
     "<b>Newest</b>, <b>Popular</b>, and <b>For You</b>.\n\n"
-    "<b>Setup (one-time, ~90 seconds):</b>\n"
-    "1. Tap the pencil icon in Telegram and create a new <b>Group</b> (name it anything, e.g. 'My Feed').\n"
-    "2. Open the group, tap the <b>group name</b> at the top to open its info, then tap the <b>pencil (Edit)</b> icon. "
-    "Scroll down and toggle <b>Topics</b> ON. Save.\n"
-    "3. Back in the group info: <b>Administrators</b> → <b>Add Administrator</b> → search for me, "
-    "give me <b>Manage Topics</b> permission and confirm.\n\n"
-    "I'll detect when I'm added and set up the topics automatically."
+    "You need a Telegram group with <b>Topics</b> enabled. Already have one? Skip to step 2.\n\n"
+    "<b>1. Create the group</b>\n"
+    "Tap the pencil icon → <b>New Group</b> → name it anything (e.g. 'My Feed').\n\n"
+    "<b>2. Enable Topics</b>\n"
+    "Open the group → tap the <b>group name</b> at the top → tap the <b>pencil (Edit)</b> "
+    "→ scroll down → toggle <b>Topics</b> ON → Save.\n\n"
+    "<b>3. Add me as admin</b>\n"
+    "Still in the group info → <b>Administrators</b> → <b>Add Administrator</b> → "
+    "find me → enable <b>Manage Topics</b> → Done.\n\n"
+    "That's it. I'll set up your feed the moment you add me."
 )
 
 START_ACTIVE_USER = (
