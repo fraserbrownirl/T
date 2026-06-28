@@ -4,6 +4,9 @@
 
 You bring your own keys (X API + Telegram bot). An AI agent does the rest of the setup for you.
 
+> [!CAUTION]
+> **Don't trust any skill blindly — including this one.** Skills run with your agent's full permissions (files, shell, network, credentials). [Scan it first ↓](#security-scan-before-you-trust)
+
 ---
 
 > [!IMPORTANT]
@@ -117,6 +120,42 @@ flowchart LR
 - **Cost:** GitHub Actions is free for this; the only cost is your X API usage (~$0.50–3/mo).
 
 Full behavior, costs, and a troubleshooting table: [reference.md](reference.md).
+
+---
+
+## Security: scan before you trust
+
+Agent skills run with your agent's **full permissions** — files, shell, network, credentials. Never install one (this one included) without checking it. There is no official Anthropic skill scanner; the established tool is third-party:
+
+**[NVIDIA SkillSpector](https://github.com/NVIDIA/skillspector)** (Apache-2.0) — scans a Git URL, directory, or zip for prompt injection, data exfiltration, credential theft, and 60+ other patterns. Static analysis by default; optional LLM pass for deeper review.
+
+Scan this skill straight from GitHub before you install:
+
+```bash
+# Install once (requires uv: https://docs.astral.sh/uv/)
+uv tool install git+https://github.com/NVIDIA/skillspector.git
+
+# Static scan of this whole repo (no API key needed)
+skillspector scan https://github.com/fraserbrownirl/T
+```
+
+No `uv`? Run it via Docker instead:
+
+```bash
+git clone https://github.com/NVIDIA/skillspector.git && cd skillspector
+docker build -t skillspector .
+docker run --rm -v "$PWD:/scan" skillspector scan https://github.com/fraserbrownirl/T --no-llm
+```
+
+> [!NOTE]
+> A scanner is an aid, not a guarantee — read the findings yourself. This skill only polls the X API and posts to Telegram; it reads no credentials beyond the four secrets you set, and runs entirely inside **your own** GitHub Actions.
+
+Prefer a zero-dependency, fully-offline check? [`skillsafe`](https://github.com/kriskimmerle/skillsafe) (MIT, single Python file) is a lightweight alternative:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/kriskimmerle/skillsafe/main/skillsafe.py -o skillsafe.py
+python3 skillsafe.py skills/x-to-telegram-mirror --recursive --verbose
+```
 
 ---
 

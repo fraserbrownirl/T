@@ -9,6 +9,9 @@ This repository contains **two independent things**. Most people arriving here w
 
 > **Want to autoshare your tweets to Telegram?** Go straight to **[skills/x-to-telegram-mirror/](skills/x-to-telegram-mirror/README.md)** — it has copy-paste prompts for Cursor, Claude Code, and other agents.
 
+> [!CAUTION]
+> Agent skills run with your agent's full permissions. Before installing this (or any) skill, scan it with [NVIDIA SkillSpector](https://github.com/NVIDIA/skillspector): `skillspector scan https://github.com/fraserbrownirl/T`. See [Security: scan before you trust](skills/x-to-telegram-mirror/README.md#security-scan-before-you-trust).
+
 ---
 
 # Telegram Personal Feed
