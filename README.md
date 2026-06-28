@@ -1,3 +1,16 @@
+# What's in this repo
+
+This repository contains **two independent things**. Most people arriving here want the second one.
+
+| | What it is | Start here |
+|---|------------|-----------|
+| 🛰️ **X → Telegram Autoshare** | An **agent skill** that sets up automatic mirroring of your new X (Twitter) posts to a Telegram channel, running on free GitHub Actions. Bring your own keys; an AI agent does the setup. | **[skills/x-to-telegram-mirror/](skills/x-to-telegram-mirror/README.md)** |
+| 📣 **Telegram Personal Feed** | A multi-user Telegram bot (the original project) that lets readers subscribe to opted-in channels and get `Newest` / `Popular` / `For You` feeds in a private supergroup. | [Jump to docs ↓](#telegram-personal-feed) |
+
+> **Want to autoshare your tweets to Telegram?** Go straight to **[skills/x-to-telegram-mirror/](skills/x-to-telegram-mirror/README.md)** — it has copy-paste prompts for Cursor, Claude Code, and other agents.
+
+---
+
 # Telegram Personal Feed
 
 A subscriber-only syndication network for Telegram channels, built on the Bot API.
@@ -45,11 +58,3 @@ See [AGENTS.md](AGENTS.md) for the full map, design rules, and pitfalls.
 - Web/Mini App UI (Telegram-native flow only for now)
 - Channel-owner analytics dashboard
 - Topical-similarity recommendations (For You uses co-subscription + trending)
-
-## X → Telegram autoshare (agent skill)
-
-This repo includes an **agent skill** at [`skills/x-to-telegram-mirror/`](skills/x-to-telegram-mirror/README.md) for a separate use case: mirror one X account into a Telegram channel via GitHub Actions (BYOK — user's own X Developer API key and BotFather bot).
-
-**You do not configure this on the open-source repo itself.** Clone the repo, open it in Cursor, and ask the agent to set up X→Telegram mirroring — it scaffolds a **new repo for you** from `skills/x-to-telegram-mirror/templates/` and walks you through secrets on **your** GitHub repository.
-
-(Cursor also loads the same skill from `.cursor/skills/x-to-telegram-mirror/`.)
