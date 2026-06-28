@@ -70,7 +70,9 @@ async def supergroup_admin_change(event: ChatMemberUpdated, bot: Bot) -> None:
             await bot.send_message(
                 promoter_id,
                 "I see I've been added to a group, but it doesn't have topics enabled. "
-                "Enable Topics in the group's settings, then re-add me as admin so I can set things up.",
+                "Tap the group name → pencil (Edit) → toggle <b>Topics</b> ON and save, "
+                "then re-add me as administrator.",
+                parse_mode="HTML",
             )
         except TelegramBadRequest:
             pass

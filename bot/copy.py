@@ -27,8 +27,9 @@ START_NEW_USER = (
     "<b>Newest</b>, <b>Popular</b>, and <b>For You</b>.\n\n"
     "<b>Setup (one-time, ~90 seconds):</b>\n"
     "1. Tap the pencil icon in Telegram and create a new <b>Group</b> (name it anything, e.g. 'My Feed').\n"
-    "2. Open the group's settings, find <b>Topics</b>, and toggle it ON. The group becomes a supergroup with topics.\n"
-    "3. In the same settings: <b>Administrators</b> -> <b>Add Administrator</b> -> search for me, "
+    "2. Open the group, tap the <b>group name</b> at the top to open its info, then tap the <b>pencil (Edit)</b> icon. "
+    "Scroll down and toggle <b>Topics</b> ON. Save.\n"
+    "3. Back in the group info: <b>Administrators</b> → <b>Add Administrator</b> → search for me, "
     "give me <b>Manage Topics</b> permission and confirm.\n\n"
     "I'll detect when I'm added and set up the topics automatically."
 )
