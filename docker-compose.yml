@@ -1,0 +1,55 @@
+x-app-environment: &app-environment
+  DATABASE_URL: postgresql+asyncpg://telegram_feed:telegram_feed@postgres:5432/telegram_feed
+  DATABASE_URL_SYNC: postgresql://telegram_feed:telegram_feed@postgres:5432/telegram_feed
+  REDIS_URL: redis://redis:6379/0
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: telegram_feed
+      POSTGRES_PASSWORD: telegram_feed
+      POSTGRES_DB: telegram_feed
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U telegram_feed"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  migrate:
+    build: .
+    command: alembic upgrade head
+    env_file: .env
+    environment: *app-environment
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  bot:
+    build: .
+    command: python -m bot.main
+    env_file: .env
+    environment: *app-environment
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
