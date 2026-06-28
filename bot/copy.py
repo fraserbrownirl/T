@@ -113,7 +113,7 @@ PRIVACY_WITH_URL = (
 
 OWNER_THANKS = (
     "Thanks for adding me as administrator to <b>{title}</b>.\n\n"
-    "Your channel is now in the network. Readers who follow your channel on Telegram "
-    "can now add it to their personal feed.\n\n"
+    "Your channel is now in the network. Members of your channel can now receive "
+    "its posts in their personal feed automatically.\n\n"
     "I'll never post in or modify your channel. Remove me as administrator any time to opt out."
 )
