@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T-Rex</title>
+  <meta name="description" content="A private Telegram feed. An X account gets in only with that person's own key, and T-Rex never holds it.">
+  <link rel="canonical" href="https://fraserbrownirl.github.io/T/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="T-Rex">
+  <meta property="og:description" content="A private Telegram feed. An X account gets in only with that person's own key, and T-Rex never holds it.">
+  <meta property="og:url" content="https://fraserbrownirl.github.io/T/">
+  <meta property="og:image" content="https://fraserbrownirl.github.io/T/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="https://github.com/fraserbrownirl/T">T-Rex</a>
+    </div>
+  </header>
+  <main>
+    <article class="wrap post">
+      <h1>T-Rex</h1>
+      <p class="post-date">Nov 20, 2026</p>
+      <p>T-Rex is one product. The destination is a private Telegram group. An X account becomes a source in that group only when the person who owns the account brings their own key.</p>
+      <p>A reader has one group, with topics. T-Rex fills three of them: Newest, Popular, and For You. A source is a Telegram channel whose owner added T-Rex, or an X account whose owner paid for their own X API key. A reader only gets a channel if the owner opted in and Telegram says the reader is already a member.</p>
+      <img src="cover.jpg" alt="A stack of papers, a stamp press, and a board of notes in three columns.">
+      <p>The key is the on-ramp for that one account, and nothing else. The owner has their own GitHub repo. Actions there uses their Bearer token, every 15 minutes, to read their new original posts and put them in a Telegram channel. The first run sends nothing. Only posts after setup are mirrored. Replies, reposts, and quote posts stay on X. Once a post is in that channel it is an ordinary Telegram post, and T-Rex forwards it the same way it forwards any other channel it administers.</p>
+      <p>Readers never receive an X key. One person's key never reads anyone else's account. T-Rex never stores the key, and nothing in this project polls X on my account. The bill lands on whoever owns the token, for the one handle that job watches. One person, one repo, one key, one channel.</p>
+      <p>There is a missing join, and I hit it while testing. Setup still tells each person to make a second bot in BotFather and add that bot to the channel. T-Rex is not that bot, and T-Rex has no X connection of its own. A finished mirror does not show up in anyone's Newest topic by itself. T-Rex has to be an admin on the channel the mirror posts into.</p>
+      <p>The person who owns the key pays X for it. Telegram is free, and so is GitHub Actions. X has no monthly plan for this. They add a card, buy credits, and X charges per thing the mirror reads. A cent to look up the account. The job does that every 15 minutes, but X charges the same account once a day, about thirty cents a month. Half a cent for each new post that comes back. A check that finds nothing is free. Someone who posts a few times a day lands around a dollar a month. A heavy poster is a few dollars. They set a spending limit in the X developer console, and X stops the calls when the limit is hit. The mirror uses an app Bearer token, so those are the public rates even when the handle is their own.</p>
+      <p>The other design was one shared key. My X app would read many people's public accounts, and one bot would post for everyone. That came up later, as a hosted product. It was never built.</p>
+      <hr>
+      <p>Newest is the live feed. When a post lands in a channel the reader is subscribed to, T-Rex queues one delivery per subscriber and forwards it into their Newest topic. A photo album waits a couple of seconds and goes through as one batch. Each reader is capped at 30 posts a minute. A channel with content protection on is skipped, not copied out.</p>
+      <p>Popular is a digest, every 4 hours. T-Rex looks at the last 24 hours of posts from that reader's channels. A post with no reactions is ignored. The rest are ranked by reactions, adjusted so a big channel does not always beat a small one, with newer posts higher. It forwards the top 10 into Popular, each with a line naming the channel and the reaction count. The same post can show up again on the next run while it is still inside that window.</p>
+      <p>For You does not forward posts. Once a day it suggests up to 5 channels the reader has not added. A channel ranks higher when other readers who share this reader's subscriptions also follow it, with a smaller boost for channels that posted a lot or drew reactions in the last day. Each suggestion is a card with an Add button. Tap it and that channel's later posts start appearing in Newest.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <a href="https://github.com/fraserbrownirl/T">github.com/fraserbrownirl/T</a>
+    </div>
+  </footer>
+</body>
+</html>
